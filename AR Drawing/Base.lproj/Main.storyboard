@@ -22,7 +22,7 @@
                                 <rect key="frame" x="174.5" y="797" width="65" height="45"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="DSp-2Z-Iz6"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="DSp-2Z-Iz6"/>
                                     <constraint firstAttribute="height" constant="45" id="hx6-Yz-Xa4"/>
                                 </constraints>
                                 <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -34,6 +34,7 @@
                             <constraint firstAttribute="bottom" secondItem="NyO-Tj-hKd" secondAttribute="bottom" id="1rn-Q2-GQF"/>
                             <constraint firstItem="NyO-Tj-hKd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hsl-F9-Pie"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N6D-z9-WuF" secondAttribute="bottom" constant="20" id="OcU-va-H2z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N6D-z9-WuF" secondAttribute="bottom" constant="20" id="bl7-DQ-dKE"/>
                             <constraint firstItem="NyO-Tj-hKd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="md2-de-6La"/>
                             <constraint firstItem="NyO-Tj-hKd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mex-Ca-rwi"/>
                             <constraint firstItem="N6D-z9-WuF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vQI-ej-qip"/>
