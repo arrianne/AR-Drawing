@@ -9,7 +9,7 @@
 import UIKit
 import ARKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     // Used to track the position and orientation of the device at all times
     let configuration = ARWorldTrackingConfiguration()
@@ -21,9 +21,16 @@ class ViewController: UIViewController {
         self.sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
         self.sceneView.showsStatistics = true
         self.sceneView.session.run(configuration)
+        self.sceneView.delegate = self
            
     }
+    
+    // This is what actually helps us make the drawing app
+    // This gets called every time the view is about to render a scene
 
+    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+        print("rendering")
+    }
 
 }
 
