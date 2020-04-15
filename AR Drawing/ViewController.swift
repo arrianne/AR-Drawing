@@ -30,6 +30,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         print("rendering")
+        // PointOfView contains the current location and orientation of the camera
+        guard let pointOfView = sceneView.pointOfView else {return}
     }
 
 }
