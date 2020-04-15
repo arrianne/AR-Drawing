@@ -37,9 +37,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // The location and orientation are encoded inside the pointOfView in a transform matrix
         // To get the transform matrix we use the code below
         let transform = pointOfView.transform
-        let orientation = SCNVector3(transform.m31,transform.m32,transform.m33)
+        let orientation = SCNVector3(-transform.m31,-transform.m32,-transform.m33)
         let location = SCNVector3(transform.m41,transform.m42,transform.m43)
+        
+        // A '+' symbol can't be used to combine SCNVectors so we write the + function below
+        let frontOfCamera = orientation + location
     }
-
+    // takes 2 arguments - the orientation vector and the location vector
+    func +(left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+       // returns new vector point created using the x field of your location plus the x field of the orientation, then the same for y and z
+        return SCNVector3Make(left.x + right.x, left.y + right.y, left.z + right.z)
+        
+    }
 }
 
