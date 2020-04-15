@@ -8,21 +8,19 @@
 
 import UIKit
 import ARKit
-
 class ViewController: UIViewController, ARSCNViewDelegate {
-    @IBOutlet weak var sceneView: ARSCNView!
+    
+    @IBOutlet weak var draw: UIButton!
+    @IBOutlet weak var SceneView: ARSCNView!
     // Used to track the position and orientation of the device at all times
     let configuration = ARWorldTrackingConfiguration()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        self.sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
-        self.sceneView.showsStatistics = true
-        self.sceneView.session.run(configuration)
-        self.sceneView.delegate = self
-           
+        self.SceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        self.SceneView.showsStatistics = true
+        self.SceneView.session.run(configuration)
+        self.SceneView.delegate = self
+        // Do any additional setup after loading the view, typically from a nib.
     }
     
     // This is what actually helps us make the drawing app
@@ -32,7 +30,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         print("rendering")
         
         // PointOfView contains the current location and orientation of the camera
-        guard let pointOfView = sceneView.pointOfView else {return}
+        guard let pointOfView = self.SceneView.pointOfView else {return}
         
         // The location and orientation are encoded inside the pointOfView in a transform matrix
         // To get the transform matrix we use the code below
@@ -43,11 +41,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // A '+' symbol can't be used to combine SCNVectors so we write the + function below
         let frontOfCamera = orientation + location
     }
-    // takes 2 arguments - the orientation vector and the location vector
-    func +(left: SCNVector3, right: SCNVector3) -> SCNVector3 {
-       // returns new vector point created using the x field of your location plus the x field of the orientation, then the same for y and z
-        return SCNVector3Make(left.x + right.x, left.y + right.y, left.z + right.z)
-        
-    }
 }
 
+// takes 2 arguments - the orientation vector and the location vector
+func + (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+    // returns new vector point created using the x field of your location plus the x field of the orientation, then the same for y and z
+    return SCNVector3Make(left.x + right.x, left.y + right.y, left.z + right.z)
+}
+
+
+ 
