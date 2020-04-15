@@ -30,8 +30,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         print("rendering")
+        
         // PointOfView contains the current location and orientation of the camera
         guard let pointOfView = sceneView.pointOfView else {return}
+        
+        // The location and orientation are encoded inside the pointOfView in a transform matrix
+        // To get the transform matrix we use the code below
+        let transform = pointOfView.transform
+        let orientation = SCNVector3(transform.m31,transform.m32,transform.m33)
+        let location = SCNVector3(transform.m41,transform.m42,transform.m43)
     }
 
 }
