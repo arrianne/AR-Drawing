@@ -9,17 +9,16 @@
 import UIKit
 import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
-    
     @IBOutlet weak var draw: UIButton!
-    @IBOutlet weak var SceneView: ARSCNView!
+    @IBOutlet weak var sceneView: ARSCNView!
     // Used to track the position and orientation of the device at all times
     let configuration = ARWorldTrackingConfiguration()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.SceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
-        self.SceneView.showsStatistics = true
-        self.SceneView.session.run(configuration)
-        self.SceneView.delegate = self
+        self.sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        self.sceneView.showsStatistics = true
+        self.sceneView.session.run(configuration)
+        self.sceneView.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -27,7 +26,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // This gets called every time the view is about to render a scene
 
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        print("rendering")
         
         // PointOfView contains the current location and orientation of the camera
         guard let pointOfView = self.SceneView.pointOfView else {return}
@@ -40,6 +38,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // A '+' symbol can't be used to combine SCNVectors so we write the + function below
         let frontOfCamera = orientation + location
+        
+        // xcode automatically highlights button when it is pressed there for we can use the function below
+        if draw.isHighlighted {
+            // Creating a circle node
+            let sphereNode = SCNNode(geometry: SCNSphere(radius: 0.02))
+            // Positioning that node in the position in front of the camera
+            sphereNode.position =  frontOfCamera
+            // Actually add it to the scene
+            self.sceneView.scene.rootNode.addChildNode(sphereNode)
+            sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+            print("button pressed")
+        }
     }
 }
 
