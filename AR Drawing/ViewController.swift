@@ -39,23 +39,40 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // A '+' symbol can't be used to combine SCNVectors so we write the + function below
         let frontOfCamera = orientation + location
         
-        // xcode automatically highlights button when it is pressed there for we can use the function below
-        if draw.isHighlighted {
-            // Creating a circle node
-            let sphereNode = SCNNode(geometry: SCNSphere(radius: 0.02))
-            // Positioning that node in the position in front of the camera
-            sphereNode.position =  frontOfCamera
-            // Actually add it to the scene
-            self.sceneView.scene.rootNode.addChildNode(sphereNode)
-            sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-            print("button pressed")
-        } else {
-            // keeping a sphere visible when button isn't being pressed
-            let pointer = SCNNode(geometry: SCNSphere(radius: 0.01))
-            pointer.position = frontOfCamera
-            self.sceneView.scene.rootNode.addChildNode(pointer)
-            pointer.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+        // We need everthing here to be in the main thread so
+        DispatchQueue.main.async {
+            // xcode automatically highlights button when it is pressed there for we can use the if statement below
+            if self.draw.isHighlighted {
+                // Creating a circle node
+                let sphereNode = SCNNode(geometry: SCNSphere(radius: 0.02))
+                // Positioning that node in the position in front of the camera
+                sphereNode.position =  frontOfCamera
+                // Actually add it to the scene
+                self.sceneView.scene.rootNode.addChildNode(sphereNode)
+                sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+                print("button pressed")
+            } else {
+                // keeping a sphere visible when button isn't being pressed
+                let pointer = SCNNode(geometry: SCNSphere(radius: 0.01/2))
+                
+                // Giving the pointer a name to differentiate it from drawing sphere
+                pointer.name = "pointer"
+                pointer.position = frontOfCamera
+                
+                // Removes all the nodes from the scene view if the button isn't being pressed
+                self.sceneView.scene.rootNode.enumerateChildNodes({ (node, _) in
+                    //only remove the node if it is called pointer
+                    if node.name == "pointer" {
+                        node.removeFromParentNode()
+                    }
+                })
+                
+                self.sceneView.scene.rootNode.addChildNode(pointer)
+                pointer.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+            }
         }
+        
+        
     }
 }
 
