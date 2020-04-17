@@ -28,7 +28,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         
         // PointOfView contains the current location and orientation of the camera
-        guard let pointOfView = self.SceneView.pointOfView else {return}
+        guard let pointOfView = self.sceneView.pointOfView else {return}
         
         // The location and orientation are encoded inside the pointOfView in a transform matrix
         // To get the transform matrix we use the code below
@@ -49,6 +49,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.sceneView.scene.rootNode.addChildNode(sphereNode)
             sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
             print("button pressed")
+        } else {
+            // keeping a sphere visible when button isn't being pressed
+            let pointer = SCNNode(geometry: SCNSphere(radius: 0.01))
+            pointer.position = frontOfCamera
+            self.sceneView.scene.rootNode.addChildNode(pointer)
+            pointer.geometry?.firstMaterial?.diffuse.contents = UIColor.red
         }
     }
 }
