@@ -9,6 +9,7 @@
 import UIKit
 import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
+    @IBOutlet weak var clear: UIButton!
     @IBOutlet weak var draw: UIButton!
     @IBOutlet weak var sceneView: ARSCNView!
     // Used to track the position and orientation of the device at all times
@@ -71,7 +72,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 pointer.geometry?.firstMaterial?.diffuse.contents = UIColor.red
             }
         }
-        
         
     }
 }
