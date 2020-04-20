@@ -37,7 +37,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let orientation = SCNVector3(-transform.m31,-transform.m32,-transform.m33)
         let location = SCNVector3(transform.m41,transform.m42,transform.m43)
         
-        // A '+' symbol can't be used to combine SCNVectors so we write the + function below
+        // A '+' symbol can't be used to combine SCNVectors so we write the + function at the very bottom
         let frontOfCamera = orientation + location
         
         // We need everthing here to be in the main thread so
@@ -46,12 +46,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if self.draw.isHighlighted {
                 // Creating a circle node
                 let sphereNode = SCNNode(geometry: SCNSphere(radius: 0.02))
+                sphereNode.name = "drawn"
                 // Positioning that node in the position in front of the camera
                 sphereNode.position =  frontOfCamera
                 // Actually add it to the scene
                 self.sceneView.scene.rootNode.addChildNode(sphereNode)
                 sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-                print("button pressed")
+                
             } else {
                 // keeping a sphere visible when button isn't being pressed
                 let pointer = SCNNode(geometry: SCNSphere(radius: 0.01/2))
@@ -70,6 +71,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 
                 self.sceneView.scene.rootNode.addChildNode(pointer)
                 pointer.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+            }
+            
+            if self.clear.isHighlighted {
+                self.sceneView.scene.rootNode.enumerateChildNodes({ (node, _) in
+                    //only remove the node if it is called pointer
+                    if node.name == "drawn" {
+                        node.removeFromParentNode()
+                    }
+                })
             }
         }
         

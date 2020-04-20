@@ -15,21 +15,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyO-Tj-hKd">
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NyO-Tj-hKd">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6D-z9-WuF">
-                                <rect key="frame" x="91" y="802" width="65" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6D-z9-WuF">
+                                <rect key="frame" x="60" y="757" width="65" height="45"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="DSp-2Z-Iz6"/>
+                                    <constraint firstAttribute="width" constant="65" id="3Bk-55-ief"/>
                                     <constraint firstAttribute="height" constant="45" id="hx6-Yz-Xa4"/>
                                 </constraints>
                                 <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Draw"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lw0-dA-FLc">
-                                <rect key="frame" x="260" y="802" width="66" height="43"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lw0-dA-FLc">
+                                <rect key="frame" x="289" y="757" width="65" height="45"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="dU6-cC-eQY"/>
@@ -43,13 +44,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="NyO-Tj-hKd" secondAttribute="bottom" id="1rn-Q2-GQF"/>
-                            <constraint firstItem="NyO-Tj-hKd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hsl-F9-Pie"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N6D-z9-WuF" secondAttribute="bottom" constant="20" id="OcU-va-H2z"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N6D-z9-WuF" secondAttribute="bottom" constant="20" id="bl7-DQ-dKE"/>
-                            <constraint firstItem="NyO-Tj-hKd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="md2-de-6La"/>
-                            <constraint firstItem="NyO-Tj-hKd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mex-Ca-rwi"/>
-                            <constraint firstItem="N6D-z9-WuF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vQI-ej-qip"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lw0-dA-FLc" secondAttribute="bottom" constant="60" id="GSA-4b-FaX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N6D-z9-WuF" secondAttribute="bottom" constant="60" id="chh-Sv-rJ6"/>
+                            <constraint firstItem="N6D-z9-WuF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="p8x-nX-YJA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lw0-dA-FLc" secondAttribute="trailing" constant="60" id="pMS-O1-N0k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
